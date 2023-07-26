@@ -115,17 +115,17 @@ static void setup_iomux_ext_gpios(void)
 #endif /* CONFIG_CONSOLE_ENABLE_GPIO */
 
 /* micro SD */
-/*static iomux_v3_cfg_t const usdhc2_pads[] = {
+static iomux_v3_cfg_t const usdhc2_pads[] = {
 	MX6_PAD_CSI_VSYNC__USDHC2_CLK | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_HSYNC__USDHC2_CMD | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_DATA00__USDHC2_DATA0 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_DATA01__USDHC2_DATA1 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_DATA02__USDHC2_DATA2 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_DATA03__USDHC2_DATA3 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
-};*/
+};
 
 //#ifdef CONFIG_SYS_I2C_MXC
-#define PC MUX_PAD_CTRL(I2C_PAD_CTRL)
+//#define PC MUX_PAD_CTRL(I2C_PAD_CTRL)
 /* I2C2 */
 /*struct i2c_pads_info i2c2_pad_info = {
 	.scl = {
@@ -216,13 +216,13 @@ static int setup_fec(int fec_id)
 		= (struct iomuxc_gpr_base_regs *) IOMUXC_GPR_BASE_ADDR;
 	int ret;
 
-	if (board_version != 1) {
-		/* Enable PHY power */
+	/*if (board_version != 1) {
+		/* Enable PHY power 
 		int phy_power_gpio = IMX_GPIO_NR(3, 2);
 
 		gpio_request(phy_power_gpio, "ENET PHY power enable");
 		gpio_direction_output(phy_power_gpio , 1);
-	}
+	}*/
 
 	if (0 == fec_id) {
 		if (check_module_fused(MODULE_ENET1))
