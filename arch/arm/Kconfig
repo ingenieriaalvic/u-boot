@@ -791,10 +791,6 @@ config ARCH_MEDIATEK
 	help
 	  Support for the MediaTek SoCs family developed by MediaTek Inc.
 	  Please refer to doc/README.mediatek for more information.
-
-config TARGET_CCIMX6ULALVIC
-	bool "Support ccimx6ulalvic"
-	select CPU_V7
 	
 config ARCH_LPC32XX
 	bool "NXP LPC32xx platform"
@@ -2237,7 +2233,6 @@ source "board/broadcom/bcm968360bg/Kconfig"
 source "board/broadcom/bcm968580xref/Kconfig"
 source "board/broadcom/bcmns3/Kconfig"
 source "board/cavium/thunderx/Kconfig"
-source "board/digi/ccimx6ulalvic/Kconfig"
 source "board/eets/pdu001/Kconfig"
 source "board/emulation/qemu-arm/Kconfig"
 source "board/freescale/ls2080aqds/Kconfig"
