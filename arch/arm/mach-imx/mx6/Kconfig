@@ -255,6 +255,27 @@ config TARGET_CCIMX6ULSTARTER
 	select MISC
 	select ARCH_MISC_INIT
 	select RNG_SELF_TEST
+	
+config TARGET_TARGET_CCIMX6ULALVIC
+	bool "Alvic ConnectCore 6UL iHCP Manager Board"
+	depends on MX6UL
+	select CC6UL
+	select BOARD_EARLY_INIT_F
+	select BOARD_LATE_INIT
+	select DM
+	select DM_THERMAL
+	select SUPPORT_SPL
+	select MCA
+	select MTD_UBI_SKIP_REATTACH
+	select IMX_MODULE_FUSE
+	select OF_SYSTEM_SETUP
+	imply CMD_DM
+	select FSL_CAAM
+	select FSL_BLOB
+	select MISC
+	select ARCH_MISC_INIT
+	select RNG_SELF_TEST
+	
 
 config TARGET_CM_FX6
 	bool "CM-FX6"
@@ -910,6 +931,7 @@ source "board/boundary/nitrogen6x/Kconfig"
 source "board/bticino/mamoj/Kconfig"
 source "board/compulab/cm_fx6/Kconfig"
 source "board/digi/ccimx6sbc/Kconfig"
+source "board/digi/ccimx6ulalvic/Kconfig"
 source "board/digi/ccimx6ulsbc/Kconfig"
 source "board/digi/ccimx6ulstarter/Kconfig"
 source "board/dhelectronics/dh_imx6/Kconfig"
