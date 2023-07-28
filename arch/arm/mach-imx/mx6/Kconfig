@@ -257,7 +257,7 @@ config TARGET_CCIMX6ULSTARTER
 	select RNG_SELF_TEST
 	
 config TARGET_TARGET_CCIMX6ULALVIC
-	bool "Alvic ConnectCore 6UL iHCP Manager Board"
+	bool "Digi ConnectCore 6UL iHCP Manager"
 	depends on MX6UL
 	select CC6UL
 	select BOARD_EARLY_INIT_F
