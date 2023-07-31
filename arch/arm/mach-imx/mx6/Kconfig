@@ -256,7 +256,7 @@ config TARGET_CCIMX6ULSTARTER
 	select ARCH_MISC_INIT
 	select RNG_SELF_TEST
 	
-config TARGET_TARGET_CCIMX6ULALVIC
+config TARGET_CCIMX6ULALVIC
 	bool "Digi ConnectCore 6UL iHCP Manager"
 	depends on MX6UL
 	select CC6UL
@@ -275,7 +275,6 @@ config TARGET_TARGET_CCIMX6ULALVIC
 	select MISC
 	select ARCH_MISC_INIT
 	select RNG_SELF_TEST
-	
 
 config TARGET_CM_FX6
 	bool "CM-FX6"
