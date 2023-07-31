@@ -175,6 +175,49 @@ static void setup_iomux_uart(void)
 	imx_iomux_v3_setup_multiple_pads(uart5_pads, ARRAY_SIZE(uart5_pads));
 }
 
+#ifdef CONFIG_FSL_ESDHC_IMX
+static struct fsl_esdhc_cfg usdhc_cfg[] = {
+	{USDHC2_BASE_ADDR, 0, 4},
+};
+
+int board_mmc_getcd(struct mmc *mmc)
+{
+	/* CD not connected. Assume microSD card present */
+	return 1;
+}
+
+int board_mmc_init(struct bd_info *bis)
+{
+	int i, ret;
+
+	/*
+	 * According to the board_mmc_init() the following map is done:
+	 * (U-boot device node)    (Physical Port)
+	 * mmc0                    USDHC2
+	 */
+	for (i = 0; i < CONFIG_SYS_FSL_USDHC_NUM; i++) {
+		switch (i) {
+		case 0:
+			imx_iomux_v3_setup_multiple_pads(
+				usdhc2_pads, ARRAY_SIZE(usdhc2_pads));
+			usdhc_cfg[0].sdhc_clk = mxc_get_clock(MXC_ESDHC2_CLK);
+			break;
+		default:
+			printf("Warning: you configured more USDHC controllers"
+				"(%d) than supported by the board\n", i + 1);
+			return -EINVAL;
+		}
+
+		ret = fsl_esdhc_initialize(bis, &usdhc_cfg[i]);
+		if (ret) {
+			printf("Warning: failed to initialize mmc dev %d\n", i);
+		}
+	}
+
+	return 0;
+}
+#endif /* CONFIG_FSL_ESDHC_IMX */
+
 #ifdef CONFIG_FEC_MXC
 void reset_phy()
 {
@@ -323,7 +366,7 @@ int board_init(void)
 	board_id = get_carrierboard_id();
 
 /*#ifdef CONFIG_I2C_MULTI_BUS
-	/* Setup I2C2 (Groove connector)
+	* Setup I2C2 (Groove connector)*
 	setup_i2c(1, CONFIG_SYS_I2C_SPEED, 0x7f, &i2c2_pad_info);
 #endif*/
 
