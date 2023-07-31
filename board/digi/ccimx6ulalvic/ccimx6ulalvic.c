@@ -217,7 +217,7 @@ static int setup_fec(int fec_id)
 	int ret;
 
 	/*if (board_version != 1) {
-		/* Enable PHY power 
+		*Enable PHY power*
 		int phy_power_gpio = IMX_GPIO_NR(3, 2);
 
 		gpio_request(phy_power_gpio, "ENET PHY power enable");
@@ -322,10 +322,10 @@ int board_init(void)
 		board_version = 2;
 	board_id = get_carrierboard_id();
 
-#ifdef CONFIG_I2C_MULTI_BUS
-	/* Setup I2C2 (Groove connector) */
+/*#ifdef CONFIG_I2C_MULTI_BUS
+	/* Setup I2C2 (Groove connector)
 	setup_i2c(1, CONFIG_SYS_I2C_SPEED, 0x7f, &i2c2_pad_info);
-#endif
+#endif*/
 
 #ifdef	CONFIG_FEC_MXC
 	setup_fec(CONFIG_FEC_ENET_DEV);
