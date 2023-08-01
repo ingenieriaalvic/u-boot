@@ -267,6 +267,18 @@ config TARGET_CCIMX6ULSTARTER
 	select MCA
 	select MTD_UBI_SKIP_REATTACH
 	select FSL_BLOB
+	
+config TARGET_CCIMX6ULALVIC
+	bool "Digi ConnectCore 6UL iHCP Manager"
+	select MX6UL
+	select BOARD_LATE_INIT
+	select SUPPORT_SPL
+	select DM
+	select DM_THERMAL
+	select BOARD_EARLY_INIT_F
+	select MCA
+	select MTD_UBI_SKIP_REATTACH
+	select FSL_BLOB	
 
 config TARGET_CGTQMX6EVAL
 	bool "cgtqmx6eval"
@@ -901,6 +913,7 @@ source "board/ccv/xpress/Kconfig"
 source "board/compulab/cm_fx6/Kconfig"
 source "board/congatec/cgtqmx6eval/Kconfig"
 source "board/digi/ccimx6sbc/Kconfig"
+source "board/digi/ccimx6ulalvic/Kconfig"
 source "board/digi/ccimx6ulsbc/Kconfig"
 source "board/digi/ccimx6ulstarter/Kconfig"
 source "board/dhelectronics/dh_imx6/Kconfig"
