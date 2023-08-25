@@ -1,0 +1,6 @@
+CCIMX6ULALVICCL BOARD
+M:	Nathaly Saldarriaga <nsaldarriaga@alvic.net>
+S:	Supported
+F:	board/digi/ccimx6ulalviccl/
+F:	include/configs/ccimx6ulalviccl.h
+F:	configs/ccimx6ulalviccl_defconfig

@@ -1,0 +1,156 @@
+/dts-v1/;
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+/* i.MX6 UltraLite CPU */
+#include "imx6ul.dtsi"
+/* ConnectCore 6UL (common) */
+#include "imx6ul-ccimx6ul.dtsi"
+
+/ {
+	// Add here your platform model.
+	model = "Alvic ConnectCore 6UL iHCP Manager Board.";
+	// Add here your compatible platform.
+	compatible = "digi,ccimx6ulalvic", "digi,ccimx6ul", "fsl,imx6ul";
+	digi,machine,name = "ccimx6ulalvic";
+};
+
+&fec1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_enet1>, <&pinctrl_enet1_gpio>;
+	phy-mode = "rmii";
+	phy-handle = <&ethphy0>;
+	phy-reset-gpios = <&gpio3 13 GPIO_ACTIVE_LOW>;
+	phy-reset-duration = <26>;
+	digi,phy-reset-in-suspend;
+	status = "okay";
+
+	mdio {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		ethphy0: ethernet-phy@0 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			clocks = <&clks IMX6UL_CLK_ENET_REF>;
+			clock-names = "refclk";
+			smsc,disable-energy-detect;
+			reg = <0>;
+		};
+	};
+};
+
+&uart2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart2>;
+	status = "okay";
+};
+
+&uart4 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart4>;
+	status = "okay";
+};
+
+&uart5 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart5>;
+	status = "okay";
+};
+
+&uart6 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart6>;
+	status = "okay";
+};
+
+&usbotg1 {
+	dr_mode = "host";
+	power-active-high;
+	disable-over-current;
+	status = "okay";
+};
+
+&usbotg2 {
+	dr_mode = "host";
+	power-active-high;
+	disable-over-current;
+	status = "okay";
+};
+
+&iomuxc {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_hog>;
+
+	imx6ul-ccimx6ul {
+		pinctrl_enet1: enet1grp {
+			fsl,pins = <
+				MX6UL_PAD_GPIO1_IO07__ENET1_MDC			0x1b0b0
+				MX6UL_PAD_GPIO1_IO06__ENET1_MDIO		0x1b0b0
+				MX6UL_PAD_ENET1_TX_DATA0__ENET1_TDATA00		0x1b0b0
+				MX6UL_PAD_ENET1_TX_DATA1__ENET1_TDATA01		0x1b0b0
+				MX6UL_PAD_ENET1_RX_DATA0__ENET1_RDATA00		0x1b0b0
+				MX6UL_PAD_ENET1_RX_DATA1__ENET1_RDATA01		0x1b0b0
+				MX6UL_PAD_ENET1_TX_EN__ENET1_TX_EN		0x1b0b0
+				MX6UL_PAD_ENET1_TX_CLK__ENET1_REF_CLK1		0x40017051
+				MX6UL_PAD_ENET1_RX_EN__ENET1_RX_EN		0x1b0b0
+				MX6UL_PAD_ENET1_RX_ER__ENET1_RX_ER		0x1b0b0
+			>;
+		};
+		pinctrl_enet1_gpio: enet1gpiogrp {
+			fsl,pins = <
+				MX6UL_PAD_GPIO1_IO04__GPIO1_IO04		0x1b0b0
+			>;
+		};
+
+		pinctrl_uart2: uart2grp {
+			fsl,pins = <
+                	MX6UL_PAD_UART2_RX_DATA__UART2_DCE_RX        		0x1b0b1
+                	MX6UL_PAD_UART2_TX_DATA__UART2_DCE_TX        		0x1b0b1
+			>;
+		};
+
+		pinctrl_uart4: uart4grp {
+			fsl,pins = <
+                	MX6UL_PAD_LCD_ENABLE__UART4_DCE_RX        		0x1b0b1
+                	MX6UL_PAD_LCD_CLK__UART4_DCE_TX        			0x1b0b1
+			>;
+		};
+
+		pinctrl_uart5: uart5grp {
+			fsl,pins = <
+                	MX6UL_PAD_UART5_RX_DATA__UART5_DCE_RX        		0x1b0b1
+                	MX6UL_PAD_UART5_TX_DATA__UART5_DCE_TX        		0x1b0b1
+			>;
+		};
+
+		pinctrl_uart6: uart6grp {
+			fsl,pins = <
+                	MX6UL_PAD_CSI_PIXCLK__UART6_DCE_RX        		0x1b0b1
+                	MX6UL_PAD_CSI_MCLK__UART6_DCE_TX        		0x1b0b1
+			>;
+		};
+
+		pinctrl_hog: hoggrp {
+			fsl,pins = <
+                		/* RTS_uart6 */
+                		MX6UL_PAD_CSI_VSYNC__GPIO4_IO19        		0x1b0b0
+                		/* RTS_uart5 */
+                		MX6UL_PAD_CSI_DATA02__GPIO4_IO23        	0x1b0b0
+                		/* RTS_uart4 */
+                		MX6UL_PAD_LCD_VSYNC__GPIO3_IO03        		0x1b0b0
+                		/* RTS_uart2 */
+                		MX6UL_PAD_JTAG_MOD__GPIO1_IO10        		0x1b0b0
+				/* LED_EST_ROJ */
+				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00		0x1b0b0
+				/* LED_EST_VER */
+				MX6UL_PAD_GPIO1_IO01__GPIO1_IO01		0x1b0b0
+				/* LED_EST_AZUL */
+				MX6UL_PAD_GPIO1_IO05__GPIO1_IO05		0x1b0b0
+				/* LED_TX */
+				MX6UL_PAD_LCD_RESET__GPIO3_IO04			0x1b0b0
+				/* LED_RX */
+				MX6UL_PAD_LCD_DATA09__GPIO3_IO14		0x1b0b0
+			>;
+		};
+
+	};
+};

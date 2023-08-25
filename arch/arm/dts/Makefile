@@ -711,6 +711,7 @@ dtb-$(CONFIG_MX6UL) += \
 	imx6ul-pico-hobbit.dtb \
 	imx6ul-pico-pi.dtb \
 	imx6ul-ccimx6ulalvic.dtb \
+	imx6ul-ccimx6ulalviccl.dtb \
 	imx6ul-ccimx6ulsbc.dtb \
 	imx6ul-ccimx6ulstarter.dtb
 
