@@ -10,8 +10,8 @@
 	// Add here your platform model.
 	model = "Alvic ConnectCore 6UL iHCP Manager Board.";
 	// Add here your compatible platform.
-	compatible = "digi,ccimx6ulalvic", "digi,ccimx6ul", "fsl,imx6ul";
-	digi,machine,name = "ccimx6ulalvic";
+	compatible = "digi,ccimx6ulalviccl", "digi,ccimx6ul", "fsl,imx6ul";
+	digi,machine,name = "ccimx6ulalviccl";
 };
 
 &fec1 {
