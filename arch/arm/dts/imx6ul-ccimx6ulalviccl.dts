@@ -138,7 +138,7 @@
                 		/* RTS_uart4 */
                 		MX6UL_PAD_LCD_VSYNC__GPIO3_IO03        		0x1b0b0
                 		/* RTS_uart2 */
-                		MX6UL_PAD_JTAG_MOD__GPIO1_IO10        		0x1b0b0
+                		MX6UL_PAD_UART2_RTS_B__GPIO1_IO23      		0x1b0b0
 				/* LED_EST_ROJ */
 				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00		0x1b0b0
 				/* LED_EST_VER */
