@@ -41,24 +41,40 @@
 &uart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2>;
+	uart-has-rtscts;
+	linux,rs485-enabled-at-boot-time;
+//	rs485-rts-active-high;
+	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
 
 &uart4 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart4>;
+	uart-has-rtscts;
+	linux,rs485-enabled-at-boot-time;
+//	rs485-rts-active-high;
+	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
 
 &uart5 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart5>;
+	uart-has-rtscts;
+	linux,rs485-enabled-at-boot-time;
+	rs485-rts-active-low;
+	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
 
 &uart6 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart6>;
+	uart-has-rtscts;
+	linux,rs485-enabled-at-boot-time;
+//	rs485-rts-active-high;
+	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
 
@@ -105,6 +121,7 @@
 			fsl,pins = <
                 	MX6UL_PAD_UART2_RX_DATA__UART2_DCE_RX        		0x1b0b1
                 	MX6UL_PAD_UART2_TX_DATA__UART2_DCE_TX        		0x1b0b1
+                	MX6UL_PAD_UART2_CTS_B__UART2_DCE_CTS        		0x1b0b1
 			>;
 		};
 
@@ -112,6 +129,7 @@
 			fsl,pins = <
                 	MX6UL_PAD_LCD_ENABLE__UART4_DCE_RX        		0x1b0b1
                 	MX6UL_PAD_LCD_CLK__UART4_DCE_TX        			0x1b0b1
+                	MX6UL_PAD_LCD_HSYNC__UART4_DCE_CTS        		0x1b0b1
 			>;
 		};
 
@@ -119,6 +137,7 @@
 			fsl,pins = <
                 	MX6UL_PAD_UART5_RX_DATA__UART5_DCE_RX        		0x1b0b1
                 	MX6UL_PAD_UART5_TX_DATA__UART5_DCE_TX        		0x1b0b1
+                	MX6UL_PAD_CSI_DATA03__UART5_DCE_CTS        		0x1b0b1
 			>;
 		};
 
@@ -126,6 +145,7 @@
 			fsl,pins = <
                 	MX6UL_PAD_CSI_PIXCLK__UART6_DCE_RX        		0x1b0b1
                 	MX6UL_PAD_CSI_MCLK__UART6_DCE_TX        		0x1b0b1
+                	MX6UL_PAD_CSI_HSYNC__UART6_DCE_CTS        		0x1b0b1
 			>;
 		};
 
