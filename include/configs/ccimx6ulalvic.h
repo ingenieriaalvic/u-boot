@@ -91,7 +91,7 @@
 #endif
 
 /* I2C */
-//#define CONFIG_SYS_I2C_MXC_I2C1
+#define CONFIG_SYS_I2C_MXC_I2C1
 //#define CONFIG_SYS_I2C_MXC_I2C2
 
 #undef CONFIG_DEFAULT_FDT_FILE
@@ -299,4 +299,4 @@
 /* UBI and UBIFS support */
 #define CONFIG_DIGI_UBI
 
-#endif /* CCIMX6ULSTARTER_CONFIG_H */
+#endif /* CCIMX6ULALVICCL_CONFIG_H */
