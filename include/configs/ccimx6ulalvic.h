@@ -25,9 +25,9 @@
 #define CONFIG_CMD_UPDATE_NAND
 #define CONFIG_SYS_STORAGE_MEDIA	"nand"
 #define CONFIG_CMD_BOOTSTREAM
-//#else
-//#define CONFIG_CMD_UPDATE_MMC
-//#define CONFIG_SYS_STORAGE_MEDIA	"mmc"
+#else
+#define CONFIG_CMD_UPDATE_MMC
+#define CONFIG_SYS_STORAGE_MEDIA	"mmc"
 #endif
 
 #ifdef CONFIG_SYS_USE_NAND
@@ -41,7 +41,7 @@
 
 #endif
 
-//#define CONFIG_SYS_FSL_USDHC_NUM	1
+#define CONFIG_SYS_FSL_USDHC_NUM	1
 
 /* U-Boot Environment */
 #if defined(CONFIG_ENV_IS_IN_MMC)
@@ -97,7 +97,7 @@
 #undef CONFIG_DEFAULT_FDT_FILE
 #define CONFIG_DEFAULT_FDT_FILE		"imx6ul-" CONFIG_SYS_BOARD ".dtb"
 
-//#define CONFIG_SYS_MMC_IMG_LOAD_PART	1
+#define CONFIG_SYS_MMC_IMG_LOAD_PART	1
 
 #undef CONFIG_BOOTCOMMAND
 #define CONFIG_BOOTCOMMAND \
@@ -264,9 +264,9 @@
 	""	/* end line */
 #endif
 
-//#define CONFIG_SYS_MMC_ENV_DEV		0   /* USDHC2 */
-//#define CONFIG_SYS_MMC_ENV_PART		0	/* user area */
-//#define CONFIG_MMCROOT			"/dev/mmcblk1p2"  /* USDHC2 */
+#define CONFIG_SYS_MMC_ENV_DEV		0   /* USDHC2 */
+#define CONFIG_SYS_MMC_ENV_PART		0	/* user area */
+#define CONFIG_MMCROOT			"/dev/mmcblk1p2"  /* USDHC2 */
 
 /* Carrier board version and ID commands */
 #define CONFIG_CMD_BOARD_VERSION
