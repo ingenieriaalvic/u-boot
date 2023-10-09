@@ -17,8 +17,8 @@
 #include <asm/mach-imx/mxc_i2c.h>
 #include <asm/io.h>
 #include <common.h>
-#include <fsl_esdhc_imx.h>
-#include <i2c.h>
+// #include <fsl_esdhc_imx.h>
+// #include <i2c.h>
 #include <linux/sizes.h>
 #include <linux/fb.h>
 #include <miiphy.h>
@@ -57,7 +57,7 @@ unsigned int board_id = CARRIERBOARD_ID_UNDEFINED;
 	PAD_CTL_PUS_100K_UP | PAD_CTL_SPEED_MED |		\
 	PAD_CTL_DSE_40ohm   | PAD_CTL_SRE_FAST  | PAD_CTL_HYS)
 
-#define I2C_PAD_CTRL    (PAD_CTL_PKE | PAD_CTL_PUE |            \
+/*#define I2C_PAD_CTRL    (PAD_CTL_PKE | PAD_CTL_PUE |            \
 	PAD_CTL_PUS_100K_UP | PAD_CTL_SPEED_MED |               \
 	PAD_CTL_DSE_40ohm | PAD_CTL_HYS |			\
 	PAD_CTL_ODE)
@@ -65,7 +65,7 @@ unsigned int board_id = CARRIERBOARD_ID_UNDEFINED;
 #define USDHC_PAD_CTRL (PAD_CTL_PKE | PAD_CTL_PUE |		\
 	PAD_CTL_PUS_22K_UP  | PAD_CTL_SPEED_LOW |		\
 	PAD_CTL_DSE_80ohm   | PAD_CTL_SRE_FAST  | PAD_CTL_HYS)
-
+*/
 #define ENET_PAD_CTRL  (PAD_CTL_PUS_100K_UP | PAD_CTL_PUE |     \
 	PAD_CTL_SPEED_HIGH   |                                   \
 	PAD_CTL_DSE_48ohm   | PAD_CTL_SRE_FAST)
@@ -91,7 +91,7 @@ static iomux_v3_cfg_t const uart5_pads[] = {
 	MX6_PAD_UART5_RX_DATA__UART5_DCE_RX | MUX_PAD_CTRL(UART_PAD_CTRL),
 };
 
-#ifdef CONFIG_CONSOLE_ENABLE_GPIO
+/*#ifdef CONFIG_CONSOLE_ENABLE_GPIO
 static iomux_v3_cfg_t const ext_gpios_pads[] = {
 	MX6_PAD_GPIO1_IO04__GPIO1_IO04 | MUX_PAD_CTRL(GPI_PAD_CTRL),
 	MX6_PAD_JTAG_TDO__GPIO1_IO12 | MUX_PAD_CTRL(GPI_PAD_CTRL),
@@ -108,7 +108,7 @@ static void setup_iomux_ext_gpios(void)
 }
 #endif /* CONFIG_CONSOLE_ENABLE_GPIO */
 
-/* micro SD */
+/* micro SD 
 static iomux_v3_cfg_t const usdhc2_pads[] = {
 	MX6_PAD_CSI_VSYNC__USDHC2_CLK | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_HSYNC__USDHC2_CMD | MUX_PAD_CTRL(USDHC_PAD_CTRL),
@@ -116,7 +116,7 @@ static iomux_v3_cfg_t const usdhc2_pads[] = {
 	MX6_PAD_CSI_DATA01__USDHC2_DATA1 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_DATA02__USDHC2_DATA2 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
 	MX6_PAD_CSI_DATA03__USDHC2_DATA3 | MUX_PAD_CTRL(USDHC_PAD_CTRL),
-};
+};*/
 
 /*#ifdef CONFIG_SYS_I2C_MXC
 #define PC MUX_PAD_CTRL(I2C_PAD_CTRL)
@@ -169,7 +169,7 @@ static void setup_iomux_uart(void)
 	imx_iomux_v3_setup_multiple_pads(uart5_pads, ARRAY_SIZE(uart5_pads));
 }
 
-#ifdef CONFIG_FSL_ESDHC_IMX
+/* #ifdef CONFIG_FSL_ESDHC_IMX
 static struct fsl_esdhc_cfg usdhc_cfg[] = {
 	{USDHC2_BASE_ADDR, 0, 4},
 };
@@ -182,11 +182,11 @@ int mmc_get_env_devno(void)
 
 	bootsel = (soc_sbmr & 0x000000FF) >> 6 ;
 
-	/* If not boot from sd/mmc, use default value */
+	/* If not boot from sd/mmc, use default value
 	if (bootsel != 1)
 		return CONFIG_SYS_MMC_ENV_DEV;
 
-	/* BOOT_CFG2[3] and BOOT_CFG2[4] */
+	/* BOOT_CFG2[3] and BOOT_CFG2[4]
 	dev_no = (soc_sbmr & 0x00001800) >> 11;
 
 	if (dev_no == 1 && mx6_esdhc_fused(USDHC1_BASE_ADDR))
@@ -197,7 +197,7 @@ int mmc_get_env_devno(void)
 
 int board_mmc_getcd(struct mmc *mmc)
 {
-	/* CD not connected. Assume microSD card present */
+	/* CD not connected. Assume microSD card present
 	return 1;
 }
 
@@ -209,7 +209,7 @@ int board_mmc_init(bd_t *bis)
 	 * According to the board_mmc_init() the following map is done:
 	 * (U-boot device node)    (Physical Port)
 	 * mmc0                    USDHC2
-	 */
+	 
 	for (i = 0; i < CONFIG_SYS_FSL_USDHC_NUM; i++) {
 		switch (i) {
 		case 0:
@@ -430,14 +430,14 @@ void platform_default_environment(void)
 
 int board_late_init(void)
 {
-#ifdef CONFIG_CONSOLE_ENABLE_GPIO
+/*#ifdef CONFIG_CONSOLE_ENABLE_GPIO
 	const char *ext_gpios[] = {
-		"GPIO1_4",	/* J8.7 */
-		"GPIO1_12",	/* J8.35 */
-		"GPIO1_13",	/* J8.12 */
-		"GPIO1_11",	/* J8.16 */
-		"GPIO1_15",	/* J8.38 */
-		"GPIO1_14",	/* J8.40 */
+		"GPIO1_4",	/* J8.7 
+		"GPIO1_12",	/* J8.35 
+		"GPIO1_13",	/* J8.12 
+		"GPIO1_11",	/* J8.16 
+		"GPIO1_15",	/* J8.38 
+		"GPIO1_14",	/* J8.40 
 	};
 	const char *ext_gpio_name = ext_gpios[CONFIG_CONSOLE_ENABLE_GPIO_NR];
 
@@ -445,7 +445,7 @@ int board_late_init(void)
 
 	if (console_enable_gpio(ext_gpio_name))
 		gd->flags &= ~(GD_FLG_DISABLE_CONSOLE | GD_FLG_SILENT);
-#endif
+#endif */
 	/* SOM late init */
 	ccimx6ul_late_init();
 
