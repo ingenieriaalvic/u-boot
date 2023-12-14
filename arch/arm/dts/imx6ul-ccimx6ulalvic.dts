@@ -53,8 +53,9 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart4>;
 	uart-has-rtscts;
-//	linux,rs485-enabled-at-boot-time;
-//	rs485-rts-active-high;
+	linux,rs485-enabled-at-boot-time;
+	rs485-rts-active-high;
+//	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
@@ -74,8 +75,9 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart6>;
 	uart-has-rtscts;
-//	linux,rs485-enabled-at-boot-time;
-//	rs485-rts-active-high;
+	linux,rs485-enabled-at-boot-time;
+	rs485-rts-active-high;
+//	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
