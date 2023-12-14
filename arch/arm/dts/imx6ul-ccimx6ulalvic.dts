@@ -42,7 +42,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2>;
 	uart-has-rtscts;
-	linux,rs485-enabled-at-boot-time;
+//	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
 //	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
@@ -53,7 +53,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart4>;
 	uart-has-rtscts;
-	linux,rs485-enabled-at-boot-time;
+//	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
 //	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
@@ -64,9 +64,9 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart5>;
 	uart-has-rtscts;
-	linux,rs485-enabled-at-boot-time;
+//	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
-//	rs485-rts-active-low;
+	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
@@ -75,7 +75,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart6>;
 	uart-has-rtscts;
-	linux,rs485-enabled-at-boot-time;
+//	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
 //	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
@@ -156,25 +156,25 @@
 		pinctrl_hog: hoggrp {
 			fsl,pins = <
                 		/* RTS_uart6 */
-//                		MX6UL_PAD_CSI_VSYNC__GPIO4_IO19        		0x1b0b0
+                		MX6UL_PAD_CSI_VSYNC__GPIO4_IO19        		0x1b0b0
                 		/* RTS_uart5 */
-//                		MX6UL_PAD_CSI_DATA02__GPIO4_IO23        	0x1b0b0
+                		MX6UL_PAD_CSI_DATA02__GPIO4_IO23        	0x1b0b0
                 		/* RTS_uart4 */
-//                		MX6UL_PAD_LCD_VSYNC__GPIO3_IO03        		0x1b0b0
+               			MX6UL_PAD_LCD_VSYNC__GPIO3_IO03        		0x1b0b0
                 		/* RTS_uart2 */
-//                		MX6UL_PAD_UART2_RTS_B__GPIO1_IO23      		0x1b0b0
+                		MX6UL_PAD_UART2_RTS_B__GPIO1_IO23      		0x1b0b0
 				/* LED_EST_ROJ */
-				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00		0x1b0b0
+				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00		0x1b0b1
 				/* LED_EST_VER */
-				MX6UL_PAD_GPIO1_IO01__GPIO1_IO01		0x1b0b0
+				MX6UL_PAD_GPIO1_IO01__GPIO1_IO01		0x1b0b1
 				/* LED_EST_AZUL */
-				MX6UL_PAD_GPIO1_IO05__GPIO1_IO05		0x1b0b0
+				MX6UL_PAD_GPIO1_IO05__GPIO1_IO05		0x1b0b1
 				/* LED_TX */
-				MX6UL_PAD_LCD_RESET__GPIO3_IO04			0x1b0b0
+				MX6UL_PAD_LCD_RESET__GPIO3_IO04			0x1b0b1
 				/* LED_RX */
-				MX6UL_PAD_LCD_DATA09__GPIO3_IO14		0x1b0b0
+				MX6UL_PAD_LCD_DATA09__GPIO3_IO14		0x1b0b1
 				/* RS232/RS485 */
-				MX6UL_PAD_CSI_DATA00__GPIO4_IO21        	0x1b0b0
+				MX6UL_PAD_CSI_DATA00__GPIO4_IO21        	0x1b0b1
 			>;
 		};
 
