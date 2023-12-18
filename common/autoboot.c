@@ -330,6 +330,10 @@ const char *bootdelay_process(void)
 {
 	char *s;
 	int bootdelay;
+	unsigned long bootlimit = env_get_ulong("bootlimit", 10, 0);
+	
+	if (bootlimit)
+		bootcount_inc();
 
 	bootcount_inc();
 
@@ -366,7 +370,7 @@ const char *bootdelay_process(void)
 		s = env_get("failbootcmd");
 	} else
 #endif /* CONFIG_POST */
-	if (bootcount_error())
+	if (bootlimit && bootcount_error())
 		s = env_get("altbootcmd");
 	else
 		s = env_get("bootcmd");

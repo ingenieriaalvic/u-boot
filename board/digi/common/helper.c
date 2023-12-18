@@ -257,8 +257,9 @@ int get_source(int argc, char * const argv[], struct load_fw *fwinfo)
 		fwinfo->src = SRC_UNDEFINED;
 		goto _err;
 	}
+	fwinfo->src = i;
 
-	switch (i) {
+	switch (fwinfo->src) {
 	case SRC_USB:
 	case SRC_MMC:
 	case SRC_SATA:
@@ -330,7 +331,7 @@ int get_source(int argc, char * const argv[], struct load_fw *fwinfo)
 #ifdef CONFIG_CMD_MTDPARTS
 _ok:
 #endif
-	fwinfo->src = i;
+
 	return 0;
 
 _err:
@@ -901,9 +902,15 @@ u64 memsize_parse(const char *const ptr, const char **retptr)
  */
 void set_verifyaddr(unsigned long loadaddr)
 {
-	 unsigned long verifyaddr;
-
-	 verifyaddr = loadaddr + ((gd->ram_size - (loadaddr - PHYS_SDRAM)) / 2);
+	 unsigned long verifyaddr, ram_size = gd->ram_size;
+#if defined(CONFIG_IMX8QXP)
+	 /*
+	  * On the ccimx8x, use only the first SDRAM bank for update
+	  * operations
+	  */
+	 ram_size = gd->bd->bi_dram[0].size;
+#endif
+	 verifyaddr = loadaddr + ((ram_size - (loadaddr - PHYS_SDRAM)) / 2);
 
 	 /* Skip reserved memory area */
 #if defined(RESERVED_MEM_START) && defined(RESERVED_MEM_END)
@@ -914,7 +921,7 @@ void set_verifyaddr(unsigned long loadaddr)
 #endif
 
 	 if (verifyaddr > loadaddr &&
-	     verifyaddr < (PHYS_SDRAM + gd->ram_size))
+		verifyaddr < (PHYS_SDRAM + ram_size))
 		 env_set_hex("verifyaddr", verifyaddr);
  }
 
