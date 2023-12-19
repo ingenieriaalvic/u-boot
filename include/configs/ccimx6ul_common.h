@@ -282,7 +282,7 @@
 					"46m(" LINUX_A_PARTITION ")," \
 					"46m(" LINUX_B_PARTITION ")," \
 					"450m(rootfs_a)," \
-					"450m(rootfs_b)
+					"450m(rootfs_b)"
 
 #define MTDPARTS_256MB			"mtdparts=" CONFIG_NAND_NAME ":" \
 					__stringify(UBOOT_PART_SIZE_SMALL) "m(" CONFIG_UBOOT_PARTITION ")," \
