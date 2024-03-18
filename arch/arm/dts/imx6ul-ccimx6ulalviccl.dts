@@ -50,6 +50,8 @@
 	uart-has-rtscts;
 	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
+	rs485-rts-active-low;
+	rs485-rx-during-tx
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
@@ -60,7 +62,6 @@
 	uart-has-rtscts;
 	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
-	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
