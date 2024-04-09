@@ -305,4 +305,4 @@
 /* UBI and UBIFS support */
 #define CONFIG_DIGI_UBI
 
-#endif /* CCIMX6ULALVICCL_CONFIG_H */
+#endif /* CCIMX6ULALVIC_CONFIG_H */
