@@ -50,7 +50,8 @@
 	uart-has-rtscts;
 	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
-//	rs485-rts-active-low;
+	rs485-rts-active-low;
+	rs485-rx-during-tx;
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
@@ -72,7 +73,7 @@
 	uart-has-rtscts;
 	linux,rs485-enabled-at-boot-time;
 //	rs485-rts-active-high;
-	rs485-rts-active-low;
+//	rs485-rts-active-low;
 	rs485-rts-delay = <0 0>;
 	status = "okay";
 };
@@ -161,14 +162,6 @@
 
 		pinctrl_hog: hoggrp {
 			fsl,pins = <
-                		/* RTS_uart6 */
-                		MX6UL_PAD_CSI_VSYNC__GPIO4_IO19        		0x1b0b0
-                		/* RTS_uart5 */
-                		MX6UL_PAD_CSI_DATA02__GPIO4_IO23        	0x1b0b0
-                		/* RTS_uart4 */
-               			MX6UL_PAD_LCD_VSYNC__GPIO3_IO03        		0x1b0b0
-                		/* RTS_uart2 */
-                		MX6UL_PAD_UART2_RTS_B__GPIO1_IO23      		0x1b0b0
 				/* LED_EST_ROJ */
 				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00		0x1b0b0
 				/* LED_EST_VER */
