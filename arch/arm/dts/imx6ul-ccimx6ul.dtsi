@@ -249,7 +249,7 @@
 
 			vcoin_chg: vcoin {
 				regulator-min-microvolt = <2500000>;
-				regulator-max-microvolt = <3000000>;
+				regulator-max-microvolt = <3300000>;
 				regulator-boot-on;
 				regulator-always-on;
 				regulator-state-mem {

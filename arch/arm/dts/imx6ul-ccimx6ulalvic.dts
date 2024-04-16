@@ -44,6 +44,11 @@
 	};
 };
 
+&vcoin_chg {
+	regulator-min-microvolt = <2900000>;
+	regulator-max-microvolt = <3000000>;
+};
+
 &uart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2>;
