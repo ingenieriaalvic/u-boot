@@ -45,8 +45,8 @@
 };
 
 &vcoin_chg {
-//	regulator-min-microvolt = <2900000>;
-	regulator-max-microvolt = <3250000>;
+	regulator-min-microvolt = <2500000>;
+	regulator-max-microvolt = <3300000>;
 };
 
 &uart2 {
