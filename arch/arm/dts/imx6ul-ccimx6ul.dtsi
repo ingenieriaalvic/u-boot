@@ -98,9 +98,9 @@
 			#interrupt-cells = <2>;
 		};
 
-		rtc {
+		/*rtc {
 			compatible = "digi,mca-cc6ul-rtc";
-		};
+		};*/
 
 		watchdog {
 			compatible = "digi,mca-cc6ul-wdt";
@@ -318,7 +318,7 @@
 	 * On the CC6UL the RTC is implemented in the MCA. Therefore we disable
 	 * the internal one.
 	 */
-	status = "disabled";
+	status = "okay";
 };
 
 &snvs_pwrkey  {
