@@ -15,7 +15,7 @@
 
 	bootcount {
 		compatible = "u-boot,bootcount-rtc";
-		rtc = <&mca_rtc>;
+		rtc = <&snvs_rtc>;
 		offset = <0x00b0>;
 	};
 };
@@ -52,6 +52,14 @@
 	regulator-state-mem {
 		regulator-off-in-suspend;
 	};
+};
+
+&snvs_rtc  {
+	status = "okay";
+};
+
+&mca_rtc {
+	status = "disabled";
 };
 
 &uart2 {
