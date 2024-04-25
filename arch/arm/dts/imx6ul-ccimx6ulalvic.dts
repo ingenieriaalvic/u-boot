@@ -58,9 +58,9 @@
 	status = "okay";
 };
 
-&rtc {
+/*&rtc {
 	status = "disabled";
-};
+};*/
 
 &uart2 {
 	pinctrl-names = "default";
