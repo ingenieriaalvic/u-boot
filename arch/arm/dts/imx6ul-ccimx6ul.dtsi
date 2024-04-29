@@ -98,9 +98,9 @@
 			#interrupt-cells = <2>;
 		};
 
-		/*rtc {
+		rtc {
 			compatible = "digi,mca-cc6ul-rtc";
-		};*/
+		};
 
 		watchdog {
 			compatible = "digi,mca-cc6ul-wdt";
@@ -305,21 +305,21 @@
 	regulator-allow-bypass;
 };
 
-//&snvs_poweroff  {
+&snvs_poweroff  {
 	/*
 	 * On the CC6UL the power off support is implemented in the MCA.
 	 * That is why the i.MX6UL power off functionality has to be disabled.
 	 */
-//	status = "disabled";
-//};
+	status = "disabled";
+};
 
-//&snvs_rtc  {
+&snvs_rtc  {
 	/*
 	 * On the CC6UL the RTC is implemented in the MCA. Therefore we disable
 	 * the internal one.
 	 */
-//	status = "okay";
-//};
+	status = "disabled";
+};
 
 &snvs_pwrkey  {
 	/*

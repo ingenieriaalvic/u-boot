@@ -49,19 +49,19 @@
 	regulator-max-microvolt = <3100000>;
 	regulator-boot-on;
 	regulator-always-on;
-	regulator-state-mem {
-		regulator-off-in-suspend;
-	};
+//	regulator-state-mem {
+//		regulator-off-in-suspend;
+//	};
 };
 
-/*&snvs_rtc: snvs-rtc-lp {
-	compatible = "fsl,sec-v4.0-mon-rtc-lp";
-	regmap = <&snvs>;
-	offset = <0x34>;
-	interrupts = <0 19 IRQ_TYPE_LEVEL_HIGH>,
-	             <0 20 IRQ_TYPE_LEVEL_HIGH>;
+&snvs_rtc {
+//	compatible = "fsl,sec-v4.0-mon-rtc-lp";
+//	regmap = <&snvs>;
+//	offset = <0x34>;
+//	interrupts = <0 19 IRQ_TYPE_LEVEL_HIGH>,
+//	             <0 20 IRQ_TYPE_LEVEL_HIGH>;
 	status = "okay";
-};*/
+};
 
 /*&rtc {
 	status = "disabled";
