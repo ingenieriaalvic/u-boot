@@ -44,7 +44,7 @@
 	};
 };
 
-/*&vcoin_chg {
+&vcoin_chg {
 	regulator-min-microvolt = <3100000>;
 	regulator-max-microvolt = <3100000>;
 	regulator-boot-on;
@@ -52,14 +52,10 @@
 	regulator-state-mem {
 		regulator-off-in-suspend;
 	};
-};*/
+};
 
 /*&snvs_rtc {
 	status = "okay";
-};*/
-
-/*&rtc {
-	status = "disabled";
 };*/
 
 &uart2 {
