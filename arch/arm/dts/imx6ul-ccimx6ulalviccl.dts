@@ -44,6 +44,20 @@
 	};
 };
 
+&vcoin_chg {
+	regulator-min-microvolt = <3200000>;
+	regulator-max-microvolt = <3200000>;
+	regulator-boot-on;
+	regulator-always-on;
+	regulator-state-mem {
+		regulator-off-in-suspend;
+	};
+};
+
+/*&snvs_rtc {
+	status = "okay";
+};*/
+
 &uart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart2>;
