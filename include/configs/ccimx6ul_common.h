@@ -290,7 +290,7 @@
 					"1m(safe)," \
 					"12m(" CONFIG_LINUX_PARTITION ")," \
 					"14m(" CONFIG_RECOVERY_PARTITION ")," \
-					"122m(" ROOTFS_PARTITION ")," \
+					"200m(" ROOTFS_PARTITION ")," \
 					"-(update)"
 #define MTDPARTS_512MB			"mtdparts=" CONFIG_NAND_NAME ":" \
 					__stringify(UBOOT_PART_SIZE_BIG) "m(" CONFIG_UBOOT_PARTITION ")," \
